@@ -1,0 +1,11 @@
+# Build production-ready React app
+image: node:latest
+
+stages:
+  - test
+
+test_ci:
+  stage: test
+  script: "scripts/test.sh"
+  rules: # fix for https://gitlab.com/gitlab-org/gitlab/issues/34756
+    - when: on_success

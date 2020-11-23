@@ -1,0 +1,14 @@
+pages:
+  stage: deploy
+  cache:
+    paths:
+      - build
+  script:
+    - rm -rf public
+    - cp -R build public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+      when: on_success

@@ -1,0 +1,22 @@
+# Build production-ready React app
+image: node:latest
+
+stages:
+  - build
+
+build_main:
+  stage: build
+  script: "scripts/build.sh"
+  artifacts:
+    paths:
+      - build
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: on_success
+
+build_ci:
+  stage: build
+  script: "scripts/build.sh"
+  rules:
+    - if: '$CI_COMMIT_BRANCH != "main"'
+      when: on_success

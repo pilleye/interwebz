@@ -7,5 +7,6 @@ stages:
 lint_js:
   stage: lint
   script: "scripts/lint.sh"
-  rules: # fix for https://gitlab.com/gitlab-org/gitlab/issues/34756
-    - when: on_success
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: on_success

@@ -24,7 +24,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "danger": "danger",
+    "lint:ci": "eslint ./src --max-warnings=0 && prettier -c ./src",
+    "lint:fix": "eslint --fix ./src && prettier --write ./src"
   },
   "eslintConfig": {
     "extends": [
@@ -49,5 +52,8 @@
       "pre-commit": "lint-staged",
       "pre-rebase": "lint-staged"
     }
+  },
+  "devDependencies": {
+    "danger": "^10.5.3"
   }
 }

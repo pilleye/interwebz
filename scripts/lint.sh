@@ -12,14 +12,15 @@ yarn install
 git config --global user.email bot@pillai.io
 git config --global user.name "Pilleye Bot"
 
-# Lint with ESLint
-npx eslint --fix
-
-# Format with Prettier
-npx prettier --write ./src
+# Fix issues if possible
+yarn lint:fix
 
 # Store diff in temporary file
 TMPFILE=$(mktemp)
 git diff >"${TMPFILE}"
 git stash -u && git stash drop
-/usr/local/bin/reviewdog -f diff -f.diff.strip=1 -reporter=gitlab-mr-discussion < "${TMPFILE}"
+TMPFILE=$TMPFILE yarn danger ci -b main -d ./ci/lint.dangerfile.ts
+# /usr/local/bin/reviewdog -f diff -f.diff.strip=1 -reporter=gitlab-mr-discussion < "${TMPFILE}"
+
+# Fail non-fixable issues
+yarn lint:ci 

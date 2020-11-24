@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+/** @jsxImportSource @emotion/react */
+import { Global, css } from '@emotion/react';
+import { useEffect } from 'react';
 
-function App() {
+import { normalize, consoleEasterEgg } from './util/index';
+
+import { container } from './responsiveDesign';
+
+const centered = css([
+  container,
+  {
+    textAlign: 'center',
+    fontSize: '2rem',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: '1rem',
+  },
+]);
+
+const italics = css({
+  fontStyle: 'italic',
+});
+
+const App = () => {
+  useEffect(() => {
+    document.title = 'Aditya Pillai';
+    consoleEasterEgg();
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Global styles={normalize} />
+      <div css={centered}>
+        <code>
+          under <span css={italics}>~construction~</span>.
+        </code>
+      </div>
     </div>
   );
-}
+};
 
 export default App;

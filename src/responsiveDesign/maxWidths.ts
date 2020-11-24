@@ -1,0 +1,1 @@
+export const maxWidths = ['hello'];

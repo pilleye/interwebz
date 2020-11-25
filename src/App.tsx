@@ -3,6 +3,7 @@ import { Global, css } from '@emotion/react';
 import { useEffect } from 'react';
 
 import { normalize, consoleEasterEgg } from './util/index';
+import { fonts } from './fonts';
 
 import { container } from './responsiveDesign';
 
@@ -29,7 +30,7 @@ const App = () => {
 
   return (
     <div>
-      <Global styles={normalize} />
+      <Global styles={[normalize, fonts]} />
       <div css={centered}>
         <code>
           under <span css={italics}>~construction~</span>.
